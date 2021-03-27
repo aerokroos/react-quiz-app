@@ -37,17 +37,26 @@ export default function QuestionList() {
   return (
     <div>
       {quizList.slice(leftCounter, rightCounter).map((quiz, key) => (
-        <>
-          <li key={key}>{quiz.question}</li>
-          <ChoicesList choices={quiz.choices} />
-        </>
+        <div key={key}>
+          <h3>{quiz.question}</h3>
+          <ChoicesList
+            choices={quiz.choices}
+            answer={quiz.answer}
+            leftCounter={leftCounter}
+            rightCounter={rightCounter}
+          />
+        </div>
       ))}
-      <button disabled={prevButton} onClick={prevQuestion}>
-        Prev
-      </button>
-      <button disabled={nextButton} onClick={nextQuestion}>
-        Next
-      </button>
+      {
+        <div>
+          <button disabled={prevButton} onClick={prevQuestion}>
+            Prev
+          </button>
+          <button disabled={nextButton} onClick={nextQuestion}>
+            Next
+          </button>
+        </div>
+      }
     </div>
   );
 }
