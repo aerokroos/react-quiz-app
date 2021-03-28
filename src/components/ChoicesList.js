@@ -59,14 +59,16 @@ export default function ChoicesList(props) {
         />
         <label>{props.choices[3]}</label>
       </Choice>
-      <div>
+      <FinishSection>
         {props.leftCounter >= "9" && props.rightCounter >= "10" ? (
-          <button onClick={finish}>Check</button>
+          <ButtonFinish onClick={finish}>Finish</ButtonFinish>
         ) : (
           ""
         )}
-      </div>
-      <div>{showResult ? <Result score={score} /> : ""}</div>
+      </FinishSection>
+      <ResultContainer>
+        {showResult ? <Result score={score} /> : ""}
+      </ResultContainer>
     </ChoicesListContainer>
   );
 }
@@ -77,15 +79,37 @@ const ChoicesListContainer = styled.div`
 `;
 
 const Input = styled.input`
-  background-color: "blue";
   cursor: pointer;
 `;
 
 const Choice = styled.div`
-  background-color: #b9eee0;
-  color: black;
+  background-color: #fecea8;
+  color: #2a363b;
   padding: 0.5em;
   border-bottom: 2px solid white;
-  width: 250px;
+  width: 300px;
+  border-radius: 10px;
+  padding: 1em 1em;
+  margin-bottom: 1em;
+`;
+
+const FinishSection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ButtonFinish = styled.button`
+  background-color: #e84a5f;
+  color: white;
+  cursor: pointer;
+  padding: 0.5em;
+  border: 2px solid white;
   border-radius: 5px;
+`;
+
+const ResultContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
